@@ -89,4 +89,13 @@ namespace SpatialIndex
 	typedef Tools::PoolPointer<Point> PointPtr;
 
 	SIDX_DLL std::ostream& operator<<(std::ostream& os, const Point& pt);
+
+	class SpherePoint: public Point {
+         public:
+          SpherePoint(const double* pCoords, uint32_t dimension)
+              : Point(pCoords, dimension) {}
+
+          double getMinimumDistance(const IShape& in) const override;
+          double getMinimumDistance(const Point& p) const override;
+        };
 }
